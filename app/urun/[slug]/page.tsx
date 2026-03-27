@@ -5,13 +5,13 @@ type Product = {
   description: string;
   imageClass: string;
   whatsappText: string;
-  volume: string;
-  acidity?: string;
-  production: string;
-  usage: string[];
-  storage: string;
-};
 
+  volume?: string;
+  acidity?: string;
+  production?: string;
+  usage?: string[];
+  storage?: string;
+};
 const products: Record<string, Product> = {
   "500-ml-naturel-sizma": {
   name: "500 ml Natürel Sızma",
