@@ -12,21 +12,21 @@ type Product = {
   usage?: string[];
   storage?: string;
 };
+
 const products: Record<string, Product> = {
   "500-ml-naturel-sizma": {
-  name: "500 ml Natürel Sızma",
-  category: "Zeytinyağı",
-  price: "₺399",
-  description: "....",
-  imageClass: "productOlive",
-  whatsappText: "...",
-
-  volume: "500 ml",
-  acidity: "%0,3",
-  production: "Natürel sızma üretim",
-  usage: ["Salatalar", "Soğuk yemekler"],
-  storage: "Serin yerde saklayınız.",
-},
+    name: "500 ml Natürel Sızma",
+    category: "Zeytinyağı",
+    price: "₺399",
+    description: "....",
+    imageClass: "productOlive",
+    whatsappText: "...",
+    volume: "500 ml",
+    acidity: "%0,3",
+    production: "Natürel sızma üretim",
+    usage: ["Salatalar", "Soğuk yemekler"],
+    storage: "Serin yerde saklayınız.",
+  },
   "1-litre-ozel-seri": {
     name: "1 Litre Özel Seri",
     category: "Zeytinyağı",
@@ -83,6 +83,9 @@ export default async function ProductDetail({
     );
   }
 
+  const hasProductInfo =
+    product.volume || product.acidity || product.production;
+
   return (
     <main className="site">
       <section className="productDetailPage">
@@ -93,47 +96,61 @@ export default async function ProductDetail({
             <p className="sectionLabel">{product.category}</p>
             <h1 className="productDetailTitle">{product.name}</h1>
             <p className="productDetailPrice">{product.price}</p>
+
             <p className="productHighlight">
-  Erken hasat • Soğuk sıkım • Premium seri
-</p>
+              Erken hasat • Soğuk sıkım • Premium seri
+            </p>
+
             <p className="productDetailText">{product.description}</p>
+
             <div className="productTrust">
-  <span>✔ %100 Doğal</span>
-  <span>✔ Katkı Maddesi Yok</span>
-  <span>✔ Güvenli Paketleme</span>
-</div>
-            <div className="productInfoBox">
-  <div className="productInfoRow">
-    <span>Hacim</span>
-    <strong>{product.volume}</strong>
-  </div>
+              <span>✔ %100 Doğal</span>
+              <span>✔ Katkı Maddesi Yok</span>
+              <span>✔ Güvenli Paketleme</span>
+            </div>
 
-  {product.acidity && (
-    <div className="productInfoRow">
-      <span>Asit Oranı</span>
-      <strong>{product.acidity}</strong>
-    </div>
-  )}
+            {hasProductInfo && (
+              <div className="productInfoBox">
+                {product.volume && (
+                  <div className="productInfoRow">
+                    <span>Hacim</span>
+                    <strong>{product.volume}</strong>
+                  </div>
+                )}
 
-  <div className="productInfoRow">
-    <span>Üretim Tipi</span>
-    <strong>{product.production}</strong>
-  </div>
-</div>
+                {product.acidity && (
+                  <div className="productInfoRow">
+                    <span>Asit Oranı</span>
+                    <strong>{product.acidity}</strong>
+                  </div>
+                )}
 
-<div className="productExtraBlock">
-  <h3>Kullanım Alanları</h3>
-  <ul>
-    {product.usage.map((item) => (
-      <li key={item}>{item}</li>
-    ))}
-  </ul>
-</div>
+                {product.production && (
+                  <div className="productInfoRow">
+                    <span>Üretim Tipi</span>
+                    <strong>{product.production}</strong>
+                  </div>
+                )}
+              </div>
+            )}
 
-<div className="productExtraBlock">
-  <h3>Saklama Bilgisi</h3>
-  <p>{product.storage}</p>
-</div>
+            {product.usage && product.usage.length > 0 && (
+              <div className="productExtraBlock">
+                <h3>Kullanım Alanları</h3>
+                <ul>
+                  {product.usage?.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {product.storage && (
+              <div className="productExtraBlock">
+                <h3>Saklama Bilgisi</h3>
+                <p>{product.storage}</p>
+              </div>
+            )}
 
             <div className="productDetailActions">
               <a
