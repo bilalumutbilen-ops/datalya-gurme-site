@@ -5,6 +5,11 @@ type Product = {
   description: string;
   imageClass: string;
   whatsappText: string;
+  volume: string;
+  acidity?: string;
+  production: string;
+  usage: string[];
+  storage: string;
 };
 
 const products: Record<string, Product> = {
