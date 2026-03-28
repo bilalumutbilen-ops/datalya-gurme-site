@@ -836,3 +836,131 @@ img {
   font-size: 13px;
   color: #bfb5a7;
 }
+/* ========================= */
+/* PREMIUM UPGRADE LAYER */
+/* ========================= */
+
+/* Daha rafine genel görünüm */
+body {
+  background:
+    radial-gradient(circle at 20% 0%, rgba(200,169,107,0.06), transparent 25%),
+    radial-gradient(circle at 80% 100%, rgba(255,255,255,0.04), transparent 25%),
+    #121212;
+}
+
+/* Header daha premium */
+.header {
+  backdrop-filter: blur(14px);
+  background: rgba(18,18,18,0.82);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Logo daha net */
+.logoImage {
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.35));
+}
+
+/* NAV hover daha yumuşak */
+.nav a {
+  transition: all 0.3s ease;
+}
+
+.nav a:hover {
+  color: #e5c276;
+}
+
+/* HERO daha cinematic */
+.hero {
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 70% 20%, rgba(200,169,107,0.12), transparent 30%);
+  pointer-events: none;
+}
+
+/* Butonlar daha premium */
+.btnGold {
+  background: linear-gradient(135deg, #c8a96b, #d4af37);
+  box-shadow: 0 8px 20px rgba(200,169,107,0.25);
+}
+
+.btnGold:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(200,169,107,0.35);
+}
+
+.btnOutline {
+  backdrop-filter: blur(6px);
+}
+
+/* Koleksiyon kartları daha premium */
+.collectionCard {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.collectionCard:hover {
+  transform: scale(1.02);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+/* Ürün kartları upgrade */
+.card {
+  backdrop-filter: blur(10px);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.01);
+}
+
+/* Ürün başlığı daha güçlü */
+.card h3 {
+  letter-spacing: -0.4px;
+}
+
+/* Badge daha premium */
+.badge {
+  background: linear-gradient(135deg, #d7b66f, #b8923f);
+}
+
+/* WhatsApp butonu upgrade */
+.orderBtn {
+  background: linear-gradient(135deg, #c8a96b, #d4af37);
+  box-shadow: 0 8px 18px rgba(200,169,107,0.25);
+}
+
+.orderBtn:hover {
+  box-shadow: 0 12px 24px rgba(200,169,107,0.35);
+}
+
+/* CTA daha premium */
+.ctaBox {
+  background:
+    linear-gradient(135deg, rgba(200,169,107,0.08), rgba(255,255,255,0.03)),
+    #181818;
+  backdrop-filter: blur(10px);
+}
+
+/* Footer upgrade */
+.footer {
+  background:
+    linear-gradient(180deg, #0b0b0c, #090909);
+}
+
+/* Floating WhatsApp daha dikkat çekici */
+.floatingWhatsapp {
+  background: linear-gradient(135deg, #c8a96b, #d4af37);
+  animation: floatPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes floatPulse {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+  100% { transform: translateY(0); }
+}
