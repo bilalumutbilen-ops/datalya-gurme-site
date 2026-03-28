@@ -1312,3 +1312,260 @@ body {
     text-align: center;
   }
 }
+/* SPRINT 2 - CART PAGE */
+
+.cartPage {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(200,169,107,0.08), transparent 24%),
+    linear-gradient(180deg, #101010 0%, #121212 45%, #0d0d0e 100%);
+}
+
+.cartHero {
+  padding: 72px 0 24px;
+}
+
+.cartHero h1 {
+  margin: 0 0 14px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.6rem, 5vw, 4.6rem);
+  line-height: 1;
+  color: #f5efe4;
+}
+
+.cartHeroText {
+  max-width: 680px;
+  color: #c7bcad;
+  line-height: 1.8;
+}
+
+.cartSection {
+  padding: 24px 0 90px;
+}
+
+.cartLayout {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.cartMain,
+.cartSummaryCard,
+.emptyCartBox,
+.cartItemCard {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+}
+
+.emptyCartBox {
+  padding: 36px;
+  border-radius: 24px;
+}
+
+.emptyCartBox h2 {
+  margin: 0 0 12px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  color: #f5efe4;
+}
+
+.emptyCartBox p {
+  color: #c7bcad;
+  line-height: 1.8;
+  margin: 0 0 20px;
+}
+
+.cartItemsWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.cartItemCard {
+  display: grid;
+  grid-template-columns: 180px 1fr auto;
+  gap: 22px;
+  padding: 20px;
+  border-radius: 24px;
+  align-items: center;
+}
+
+.cartItemImage {
+  min-height: 180px;
+  border-radius: 18px;
+}
+
+.cartItemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cartItemTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  line-height: 1;
+  color: #f5efe4;
+}
+
+.cartItemMeta {
+  margin: 0;
+  color: #bfb5a7;
+  line-height: 1.7;
+}
+
+.cartItemActions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.quantityControl {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.quantityControl button {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.quantityControl span {
+  min-width: 18px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.removeItemBtn {
+  border: none;
+  background: transparent;
+  color: #d7b66f;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+}
+
+.cartItemPrice {
+  text-align: right;
+}
+
+.cartItemPrice strong {
+  display: block;
+  color: #d7b66f;
+  font-size: 1.5rem;
+  margin-bottom: 6px;
+}
+
+.cartItemPrice span {
+  color: #bfb5a7;
+  font-size: 0.92rem;
+}
+
+.cartSummaryCard {
+  border-radius: 24px;
+  padding: 28px;
+  position: sticky;
+  top: 110px;
+}
+
+.cartSummaryCard h2 {
+  margin: 0 0 18px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  color: #f5efe4;
+}
+
+.summaryRow,
+.summaryTotal {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.summaryRow span,
+.summaryTotal span {
+  color: #c7bcad;
+}
+
+.summaryRow strong,
+.summaryTotal strong {
+  color: #f5efe4;
+  text-align: right;
+}
+
+.summaryTotal {
+  margin-top: 8px;
+  border-bottom: none;
+}
+
+.summaryTotal strong {
+  color: #d7b66f;
+  font-size: 1.35rem;
+}
+
+.cartCheckoutBtn {
+  width: 100%;
+  margin-top: 18px;
+  border: none;
+  cursor: pointer;
+}
+
+.cartCheckoutBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cartSummaryNote {
+  margin: 14px 0 0;
+  color: #a99f91;
+  line-height: 1.7;
+  font-size: 0.92rem;
+}
+
+.cartBottomActions {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+@media (max-width: 980px) {
+  .cartLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .cartItemCard {
+    grid-template-columns: 1fr;
+  }
+
+  .cartItemImage {
+    min-height: 260px;
+  }
+
+  .cartItemPrice {
+    text-align: left;
+  }
+
+  .cartSummaryCard {
+    position: static;
+    top: auto;
+  }
+}
