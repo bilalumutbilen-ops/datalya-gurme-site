@@ -84,19 +84,54 @@ export default function Home() {
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) => product.tabs.includes(activeTab));
-  }, [activeTab]);
+  }, [activeTab, products]);
 
   return (
-    <main className="site">
-      <header className="header">
+    <main
+      className="site"
+      style={{
+        background:
+          "radial-gradient(circle at top, rgba(200,169,107,0.08), transparent 30%), linear-gradient(180deg, #101010 0%, #121212 40%, #171717 100%)",
+      }}
+    >
+      <header
+        className="header"
+        style={{
+          position: "sticky",
+          top: 0,
+          zIndex: 100,
+          backdropFilter: "blur(12px)",
+          background: "rgba(18,18,18,0.82)",
+          borderBottom: "1px solid rgba(255,255,255,0.08)",
+        }}
+      >
         <div className="container navbar">
-          <a href="#" className="brand">
+          <a
+            href="#"
+            className="brand"
+            style={{ display: "flex", alignItems: "center", gap: "12px" }}
+          >
             <img
               src="/olive-branch.png"
               alt="D'ATALYA GURME Logo"
               className="logoImage"
+              style={{
+                maxHeight: "48px",
+                width: "auto",
+                objectFit: "contain",
+                filter:
+                  "drop-shadow(0 8px 20px rgba(0,0,0,0.35)) brightness(1.02)",
+              }}
             />
-            <span className="brandText">D&apos;ATALYA GURME</span>
+            <span
+              className="brandText"
+              style={{
+                letterSpacing: "0.16em",
+                fontWeight: 600,
+              }}
+            >
+              D&apos;ATALYA GURME
+            </span>
           </a>
 
           <nav className="nav">
@@ -107,16 +142,36 @@ export default function Home() {
             <a href="#iletisim">İletişim</a>
           </nav>
 
-          <button
-            className={`menuToggle ${menuOpen ? "active" : ""}`}
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Menüyü aç"
-            type="button"
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "12px",
+            }}
           >
-            <span />
-            <span />
-            <span />
-          </button>
+            <a
+              href="https://wa.me/905345177996?text=Merhaba%20%C3%BCr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+              target="_blank"
+              rel="noreferrer"
+              className="btn btnGold"
+              style={{
+                display: "none",
+              }}
+            >
+              Sipariş Ver
+            </a>
+
+            <button
+              className={`menuToggle ${menuOpen ? "active" : ""}`}
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Menüyü aç"
+              type="button"
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
         </div>
 
         <div className={`mobileMenu ${menuOpen ? "open" : ""}`}>
@@ -138,32 +193,370 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="hero">
-        <div className="container heroContent">
-          <p className="eyebrow">Seçkin koleksiyon</p>
-          <h1>Saf Lezzet. Zarif Sunum.</h1>
-          <p className="heroText">
-            Özenle seçilen zeytinyağı ve doğal sabun koleksiyonumuzla sade,
-            güçlü ve premium bir deneyim sunuyoruz.
-          </p>
-
-          <div className="heroButtons">
-            <a href="#urunler" className="btn btnGold">
-              Ürünleri İncele
-            </a>
-            <a
-              href="https://wa.me/905345177996?text=Merhaba%20%C3%BCr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
-              target="_blank"
-              rel="noreferrer"
-              className="btn btnOutline"
+      <section
+        className="hero"
+        style={{
+          paddingTop: "48px",
+          paddingBottom: "32px",
+        }}
+      >
+        <div
+          className="container"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gap: "32px",
+            alignItems: "center",
+          }}
+        >
+          <div className="heroContent" style={{ maxWidth: "680px" }}>
+            <p
+              className="eyebrow"
+              style={{
+                letterSpacing: "0.22em",
+                color: "#c8a96b",
+                textTransform: "uppercase",
+                marginBottom: "14px",
+              }}
             >
-              WhatsApp İletişim
-            </a>
+              Seçkin koleksiyon
+            </p>
+
+            <h1
+              style={{
+                fontSize: "clamp(2.5rem, 6vw, 5rem)",
+                lineHeight: 1.05,
+                letterSpacing: "-0.03em",
+                marginBottom: "20px",
+              }}
+            >
+              Saf Lezzet. Zarif Sunum.
+            </h1>
+
+            <p
+              className="heroText"
+              style={{
+                maxWidth: "620px",
+                color: "rgba(255,255,255,0.78)",
+                fontSize: "1.05rem",
+                lineHeight: 1.8,
+              }}
+            >
+              Özenle seçilen zeytinyağı ve doğal sabun koleksiyonumuzla sade,
+              güçlü ve premium bir deneyim sunuyoruz.
+            </p>
+
+            <div
+              className="heroButtons"
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "14px",
+                marginTop: "28px",
+              }}
+            >
+              <a href="#urunler" className="btn btnGold">
+                Ürünleri İncele
+              </a>
+              <a
+                href="https://wa.me/905345177996?text=Merhaba%20%C3%BCr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+                target="_blank"
+                rel="noreferrer"
+                className="btn btnOutline"
+              >
+                WhatsApp İletişim
+              </a>
+            </div>
+
+            <p
+              className="heroTrust"
+              style={{
+                marginTop: "24px",
+                color: "rgba(255,255,255,0.68)",
+                fontSize: "0.98rem",
+              }}
+            >
+              ✔ %100 Doğal • ✔ Güvenli Paketleme • ✔ Hızlı Kargo
+            </p>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
+                gap: "14px",
+                marginTop: "28px",
+              }}
+            >
+              <div
+                style={{
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  background: "rgba(255,255,255,0.03)",
+                  borderRadius: "18px",
+                  padding: "16px 18px",
+                }}
+              >
+                <div
+                  style={{
+                    color: "#c8a96b",
+                    fontSize: "0.85rem",
+                    marginBottom: "6px",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.12em",
+                  }}
+                >
+                  Kalite
+                </div>
+                <strong>Premium seçki</strong>
+              </div>
+
+              <div
+                style={{
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  background: "rgba(255,255,255,0.03)",
+                  borderRadius: "18px",
+                  padding: "16px 18px",
+                }}
+              >
+                <div
+                  style={{
+                    color: "#c8a96b",
+                    fontSize: "0.85rem",
+                    marginBottom: "6px",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.12em",
+                  }}
+                >
+                  Deneyim
+                </div>
+                <strong>Zarif sunum</strong>
+              </div>
+
+              <div
+                style={{
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  background: "rgba(255,255,255,0.03)",
+                  borderRadius: "18px",
+                  padding: "16px 18px",
+                }}
+              >
+                <div
+                  style={{
+                    color: "#c8a96b",
+                    fontSize: "0.85rem",
+                    marginBottom: "6px",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.12em",
+                  }}
+                >
+                  İletişim
+                </div>
+                <strong>Hızlı WhatsApp akışı</strong>
+              </div>
+            </div>
           </div>
 
-          <p className="heroTrust">
-            ✔ %100 Doğal • ✔ Güvenli Paketleme • ✔ Hızlı Kargo
-          </p>
+          <div
+            style={{
+              minHeight: "520px",
+              borderRadius: "32px",
+              border: "1px solid rgba(255,255,255,0.08)",
+              background:
+                "linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%)",
+              boxShadow: "0 24px 80px rgba(0,0,0,0.32)",
+              padding: "24px",
+              position: "relative",
+              overflow: "hidden",
+            }}
+          >
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background:
+                  "radial-gradient(circle at top right, rgba(200,169,107,0.22), transparent 28%), radial-gradient(circle at bottom left, rgba(255,255,255,0.08), transparent 22%)",
+                pointerEvents: "none",
+              }}
+            />
+
+            <div
+              style={{
+                position: "relative",
+                zIndex: 2,
+                height: "100%",
+                display: "grid",
+                gridTemplateRows: "1fr auto",
+                gap: "18px",
+              }}
+            >
+              <div
+                style={{
+                  borderRadius: "24px",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  background:
+                    "linear-gradient(180deg, rgba(24,24,24,0.96) 0%, rgba(17,17,17,0.96) 100%)",
+                  padding: "28px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                }}
+              >
+                <div>
+                  <p
+                    style={{
+                      color: "#c8a96b",
+                      fontSize: "0.82rem",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.16em",
+                      marginBottom: "12px",
+                    }}
+                  >
+                    Premium seçki
+                  </p>
+
+                  <h3
+                    style={{
+                      fontSize: "clamp(1.6rem, 3vw, 2.5rem)",
+                      lineHeight: 1.15,
+                      marginBottom: "14px",
+                    }}
+                  >
+                    Doğal lezzeti modern bir marka deneyimine dönüştürüyoruz
+                  </h3>
+
+                  <p
+                    style={{
+                      color: "rgba(255,255,255,0.72)",
+                      lineHeight: 1.8,
+                    }}
+                  >
+                    Güçlü ambalaj dili, rafine vitrin kurgusu ve seçkin ürün
+                    sunumuyla markanı daha yukarı segmentte konumluyoruz.
+                  </p>
+                </div>
+
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "1fr 1fr",
+                    gap: "14px",
+                    marginTop: "22px",
+                  }}
+                >
+                  <div
+                    style={{
+                      borderRadius: "18px",
+                      background: "rgba(255,255,255,0.04)",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                      padding: "16px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        color: "#c8a96b",
+                        fontSize: "0.82rem",
+                        marginBottom: "6px",
+                      }}
+                    >
+                      Ürün Grubu
+                    </div>
+                    <strong>Zeytinyağı & Sabun</strong>
+                  </div>
+
+                  <div
+                    style={{
+                      borderRadius: "18px",
+                      background: "rgba(255,255,255,0.04)",
+                      border: "1px solid rgba(255,255,255,0.08)",
+                      padding: "16px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        color: "#c8a96b",
+                        fontSize: "0.82rem",
+                        marginBottom: "6px",
+                      }}
+                    >
+                      Sipariş Kanalı
+                    </div>
+                    <strong>WhatsApp destekli</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(3, 1fr)",
+                  gap: "12px",
+                }}
+              >
+                <div
+                  style={{
+                    minHeight: "110px",
+                    borderRadius: "20px",
+                    background:
+                      "linear-gradient(180deg, rgba(200,169,107,0.18) 0%, rgba(200,169,107,0.05) 100%)",
+                    border: "1px solid rgba(200,169,107,0.28)",
+                    padding: "16px",
+                  }}
+                >
+                  <div
+                    style={{
+                      color: "#c8a96b",
+                      fontSize: "0.8rem",
+                      marginBottom: "8px",
+                    }}
+                  >
+                    Asit Oranı
+                  </div>
+                  <strong>%0,3</strong>
+                </div>
+
+                <div
+                  style={{
+                    minHeight: "110px",
+                    borderRadius: "20px",
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    padding: "16px",
+                  }}
+                >
+                  <div
+                    style={{
+                      color: "#c8a96b",
+                      fontSize: "0.8rem",
+                      marginBottom: "8px",
+                    }}
+                  >
+                    Sunum
+                  </div>
+                  <strong>Premium seri</strong>
+                </div>
+
+                <div
+                  style={{
+                    minHeight: "110px",
+                    borderRadius: "20px",
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    padding: "16px",
+                  }}
+                >
+                  <div
+                    style={{
+                      color: "#c8a96b",
+                      fontSize: "0.8rem",
+                      marginBottom: "8px",
+                    }}
+                  >
+                    Deneyim
+                  </div>
+                  <strong>Seçkin koleksiyon</strong>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -267,7 +660,16 @@ export default function Home() {
 
           <div className="productGrid">
             {filteredProducts.map((product) => (
-              <article className="card" key={product.id}>
+              <article
+                className="card"
+                key={product.id}
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.015) 100%)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  boxShadow: "0 20px 50px rgba(0,0,0,0.18)",
+                }}
+              >
                 {product.isTopSeller && activeTab === "cok-satanlar" && (
                   <span className="topBadge">Çok Satan</span>
                 )}
@@ -289,8 +691,24 @@ export default function Home() {
                     <span className="badge outline">{product.badges[1]}</span>
                   </div>
 
-                  <div className="priceRow">
+                  <div
+                    className="priceRow"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      gap: "12px",
+                    }}
+                  >
                     <strong>{product.price}</strong>
+                    <span
+                      style={{
+                        fontSize: "0.88rem",
+                        color: "rgba(255,255,255,0.62)",
+                      }}
+                    >
+                      Premium seri
+                    </span>
                   </div>
 
                   <a
@@ -341,7 +759,15 @@ export default function Home() {
       </section>
 
       <section className="cta">
-        <div className="container ctaBox">
+        <div
+          className="container ctaBox"
+          style={{
+            border: "1px solid rgba(255,255,255,0.08)",
+            background:
+              "linear-gradient(180deg, rgba(255,255,255,0.045) 0%, rgba(255,255,255,0.02) 100%)",
+            boxShadow: "0 24px 60px rgba(0,0,0,0.18)",
+          }}
+        >
           <div>
             <p className="sectionLabel">Hızlı Sipariş</p>
             <h2>Sipariş veya bilgi için bizimle hemen iletişime geçin</h2>
