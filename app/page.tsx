@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 
 type ProductItem = {
   id: number;
@@ -21,6 +22,8 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<
     "cok-satanlar" | "yeni-gelenler" | "tercih-edilenler"
   >("cok-satanlar");
+  const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
+  const [cartCount, setCartCount] = useState(0);
 
   const products: ProductItem[] = [
     {
@@ -86,6 +89,11 @@ export default function Home() {
     return products.filter((product) => product.tabs.includes(activeTab));
   }, [activeTab, products]);
 
+  const handleAddToCart = () => {
+    setCartCount((prev) => prev + 1);
+    setSelectedProduct(null);
+  };
+
   return (
     <main
       className="site"
@@ -149,17 +157,9 @@ export default function Home() {
               gap: "12px",
             }}
           >
-            <a
-              href="https://wa.me/905345177996?text=Merhaba%20%C3%BCr%C3%BCnleriniz%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
-              target="_blank"
-              rel="noreferrer"
-              className="btn btnGold"
-              style={{
-                display: "none",
-              }}
-            >
-              Sipariş Ver
-            </a>
+            <div className="cartMiniBadge">
+              Sepet <span>{cartCount}</span>
+            </div>
 
             <button
               className={`menuToggle ${menuOpen ? "active" : ""}`}
@@ -278,81 +278,6 @@ export default function Home() {
             >
               ✔ %100 Doğal • ✔ Güvenli Paketleme • ✔ Hızlı Kargo
             </p>
-
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
-                gap: "14px",
-                marginTop: "28px",
-              }}
-            >
-              <div
-                style={{
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  background: "rgba(255,255,255,0.03)",
-                  borderRadius: "18px",
-                  padding: "16px 18px",
-                }}
-              >
-                <div
-                  style={{
-                    color: "#c8a96b",
-                    fontSize: "0.85rem",
-                    marginBottom: "6px",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.12em",
-                  }}
-                >
-                  Kalite
-                </div>
-                <strong>Premium seçki</strong>
-              </div>
-
-              <div
-                style={{
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  background: "rgba(255,255,255,0.03)",
-                  borderRadius: "18px",
-                  padding: "16px 18px",
-                }}
-              >
-                <div
-                  style={{
-                    color: "#c8a96b",
-                    fontSize: "0.85rem",
-                    marginBottom: "6px",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.12em",
-                  }}
-                >
-                  Deneyim
-                </div>
-                <strong>Zarif sunum</strong>
-              </div>
-
-              <div
-                style={{
-                  border: "1px solid rgba(255,255,255,0.08)",
-                  background: "rgba(255,255,255,0.03)",
-                  borderRadius: "18px",
-                  padding: "16px 18px",
-                }}
-              >
-                <div
-                  style={{
-                    color: "#c8a96b",
-                    fontSize: "0.85rem",
-                    marginBottom: "6px",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.12em",
-                  }}
-                >
-                  İletişim
-                </div>
-                <strong>Hızlı WhatsApp akışı</strong>
-              </div>
-            </div>
           </div>
 
           <div
@@ -432,55 +357,6 @@ export default function Home() {
                     Güçlü ambalaj dili, rafine vitrin kurgusu ve seçkin ürün
                     sunumuyla markanı daha yukarı segmentte konumluyoruz.
                   </p>
-                </div>
-
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: "14px",
-                    marginTop: "22px",
-                  }}
-                >
-                  <div
-                    style={{
-                      borderRadius: "18px",
-                      background: "rgba(255,255,255,0.04)",
-                      border: "1px solid rgba(255,255,255,0.08)",
-                      padding: "16px",
-                    }}
-                  >
-                    <div
-                      style={{
-                        color: "#c8a96b",
-                        fontSize: "0.82rem",
-                        marginBottom: "6px",
-                      }}
-                    >
-                      Ürün Grubu
-                    </div>
-                    <strong>Zeytinyağı & Sabun</strong>
-                  </div>
-
-                  <div
-                    style={{
-                      borderRadius: "18px",
-                      background: "rgba(255,255,255,0.04)",
-                      border: "1px solid rgba(255,255,255,0.08)",
-                      padding: "16px",
-                    }}
-                  >
-                    <div
-                      style={{
-                        color: "#c8a96b",
-                        fontSize: "0.82rem",
-                        marginBottom: "6px",
-                      }}
-                    >
-                      Sipariş Kanalı
-                    </div>
-                    <strong>WhatsApp destekli</strong>
-                  </div>
                 </div>
               </div>
 
@@ -674,15 +550,25 @@ export default function Home() {
                   <span className="topBadge">Çok Satan</span>
                 )}
 
-                <div className={`cardImage ${product.imageClass}`} />
+                <div className={`cardImage ${product.imageClass}`}>
+                  <div className="productQuickOverlay">
+                    <button
+                      type="button"
+                      className="quickViewBtn"
+                      onClick={() => setSelectedProduct(product)}
+                    >
+                      🔍
+                    </button>
+                  </div>
+                </div>
 
                 <div className="cardBody">
                   <span className="category">{product.category}</span>
                   <h3>{product.title}</h3>
 
-                  <a href={product.detailHref} className="productDetailLink">
+                  <Link href={product.detailHref} className="productDetailLink">
                     Ürünü İncele
-                  </a>
+                  </Link>
 
                   <p>{product.description}</p>
 
@@ -711,14 +597,9 @@ export default function Home() {
                     </span>
                   </div>
 
-                  <a
-                    className="orderBtn"
-                    href={product.whatsappHref}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    Hemen WhatsApp’tan Sipariş Ver
-                  </a>
+                  <button className="orderBtn" onClick={handleAddToCart} type="button">
+                    Sepete Ekle
+                  </button>
                 </div>
               </article>
             ))}
@@ -818,6 +699,56 @@ export default function Home() {
       >
         WhatsApp
       </a>
+
+      {selectedProduct && (
+        <div className="quickViewModal" onClick={() => setSelectedProduct(null)}>
+          <div
+            className="quickViewModalContent"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              className="quickViewClose"
+              onClick={() => setSelectedProduct(null)}
+            >
+              ×
+            </button>
+
+            <div className="quickViewGrid">
+              <div className={`quickViewImage ${selectedProduct.imageClass}`} />
+
+              <div className="quickViewInfo">
+                <span className="productDetailCategory">
+                  {selectedProduct.category}
+                </span>
+
+                <h3>{selectedProduct.title}</h3>
+
+                <p className="quickViewDescription">
+                  {selectedProduct.description}
+                </p>
+
+                <div className="productBadges">
+                  <span className="badge">{selectedProduct.badges[0]}</span>
+                  <span className="badge outline">{selectedProduct.badges[1]}</span>
+                </div>
+
+                <div className="quickViewPrice">{selectedProduct.price}</div>
+
+                <div className="quickViewActions">
+                  <button type="button" className="btn btnGold" onClick={handleAddToCart}>
+                    Sepete Ekle
+                  </button>
+
+                  <Link href={selectedProduct.detailHref} className="btn btnOutline">
+                    Ürün Detayına Git
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

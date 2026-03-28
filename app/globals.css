@@ -1140,3 +1140,175 @@ body {
     font-size: clamp(2.3rem, 10vw, 3.6rem);
   }
 }
+/* SPRINT 1 - QUICK VIEW + MINI CART */
+
+.cartMiniBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: #f5efe4;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.cartMiniBadge span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #c8a96b, #d4af37);
+  color: #111;
+  font-size: 0.82rem;
+}
+
+.cardImage {
+  position: relative;
+  overflow: hidden;
+}
+
+.productQuickOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 10, 0.42);
+  opacity: 0;
+  transition: 0.28s ease;
+}
+
+.card:hover .productQuickOverlay {
+  opacity: 1;
+}
+
+.quickViewBtn {
+  width: 68px;
+  height: 68px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.quickViewBtn:hover {
+  transform: scale(1.08);
+  background: rgba(200, 169, 107, 0.18);
+}
+
+.quickViewModal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(8, 8, 8, 0.76);
+  backdrop-filter: blur(8px);
+}
+
+.quickViewModalContent {
+  position: relative;
+  width: min(1040px, 100%);
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, #161616 0%, #111111 100%);
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.45);
+}
+
+.quickViewClose {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.quickViewGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.quickViewImage {
+  min-height: 560px;
+}
+
+.quickViewInfo {
+  padding: 42px 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.quickViewInfo h3 {
+  margin: 10px 0 14px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1;
+  color: #f5efe4;
+}
+
+.quickViewDescription {
+  color: #cbbfaf;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+.quickViewPrice {
+  color: #d7b66f;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 16px 0 24px;
+}
+
+.quickViewActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (max-width: 900px) {
+  .cartMiniBadge {
+    display: none;
+  }
+
+  .quickViewGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .quickViewImage {
+    min-height: 300px;
+  }
+
+  .quickViewInfo {
+    padding: 26px 22px;
+  }
+
+  .quickViewActions {
+    flex-direction: column;
+  }
+
+  .quickViewActions .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
