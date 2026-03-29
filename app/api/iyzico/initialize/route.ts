@@ -1,7 +1,8 @@
 export const runtime = "nodejs";
 
 import { NextResponse } from "next/server";
-import Iyzipay from "iyzipay";
+
+const Iyzipay = require("iyzipay");
 
 const iyzipay = new Iyzipay({
   apiKey: process.env.IYZICO_API_KEY!,

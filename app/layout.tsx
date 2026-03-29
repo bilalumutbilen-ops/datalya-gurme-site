@@ -30,12 +30,12 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "D'ATALYA GURME" }],
   creator: "D'ATALYA GURME",
-  metadataBase: new URL("https://example.com"),
+  metadataBase: new URL("https://bilalumutbilen-ops-datalya-gurme-si.vercel.app"),
   openGraph: {
     title: "D'ATALYA GURME | Premium Zeytinyağı ve Doğal Bakım",
     description:
       "Premium zeytinyağı, zeytin ve doğal bakım ürünlerinde sade, güçlü ve zarif bir deneyim.",
-    url: "https://example.com",
+    url: "https://bilalumutbilen-ops-datalya-gurme-si.vercel.app",
     siteName: "D'ATALYA GURME",
     locale: "tr_TR",
     type: "website",
@@ -54,7 +54,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="tr" className={`${inter.variable} ${playfair.variable}`}>
-      <body className="bg-[#121212] text-white antialiased">
+      <body className="antialiased">
         <CartProvider>{children}</CartProvider>
       </body>
     </html>

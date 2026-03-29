@@ -1,5 +1,5 @@
 "use client";
-
+import LegalLinks from "../components/LegalLinks";
 import { useState } from "react";
 
 export default function CheckoutPage() {
@@ -8,73 +8,83 @@ export default function CheckoutPage() {
   const handlePayment = async () => {
     setLoading(true);
 
-    try {
-      const res = await fetch("/api/iyzico/initialize", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          price: "100",
-          name: "Bilal",
-          surname: "Bilen",
-          email: "test@test.com",
-          phone: "+905555555555",
-          address: "Istanbul",
-        }),
-      });
-
-      const data = await res.json();
-
-      if (data.checkoutFormContent) {
-        const div = document.createElement("div");
-        div.innerHTML = data.checkoutFormContent;
-        document.body.appendChild(div);
-
-        const script = div.querySelector("script");
-        if (script) {
-          eval(script.innerText);
-        }
-      } else {
-        alert("Ödeme başlatılamadı");
-        console.log(data);
-      }
-
-    } catch (error) {
-      console.error(error);
-      alert("Bir hata oluştu");
-    }
-
-    setLoading(false);
+    // Şimdilik ödeme devre dışı
+    setTimeout(() => {
+      alert("Ödeme sistemi yakında aktif olacak 💳");
+      setLoading(false);
+    }, 1000);
   };
 
   return (
     <div style={{
-      maxWidth: "500px",
-      margin: "100px auto",
-      padding: "40px",
-      background: "#121212",
+      minHeight: "100vh",
+      background: "#0e0e0e",
       color: "white",
-      textAlign: "center",
-      borderRadius: "16px"
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center"
     }}>
-      <h1>Ödeme Sayfası</h1>
+      <div style={{
+        width: "100%",
+        maxWidth: "500px",
+        background: "#1a1a1a",
+        padding: "40px",
+        borderRadius: "20px",
+        boxShadow: "0 10px 40px rgba(0,0,0,0.5)"
+      }}>
+        <h1 style={{ fontSize: "28px", marginBottom: "20px" }}>
+          Siparişi Tamamla
+        </h1>
 
-      <button
-        onClick={handlePayment}
-        disabled={loading}
-        style={{
-          marginTop: "20px",
-          padding: "15px 30px",
+        {/* Ürün Özeti */}
+        <div style={{
+          background: "#111",
+          padding: "15px",
           borderRadius: "10px",
-          border: "none",
-          background: "#2c2c2c",
-          color: "white",
-          cursor: "pointer"
-        }}
-      >
-        {loading ? "Yükleniyor..." : "Ödemeye Geç"}
-      </button>
+          marginBottom: "20px"
+        }}>
+          <p><strong>Ürün:</strong> Premium Zeytinyağı</p>
+          <p><strong>Fiyat:</strong> 100₺</p>
+        </div>
+
+        {/* Güven Mesajı */}
+        <div style={{
+          fontSize: "14px",
+          color: "#aaa",
+          marginBottom: "20px"
+        }}>
+          🔒 Tüm ödemeleriniz 256-bit SSL ile korunmaktadır.
+        </div>
+
+        {/* Buton */}
+        <button
+          onClick={handlePayment}
+          disabled={loading}
+          style={{
+            width: "100%",
+            padding: "15px",
+            borderRadius: "10px",
+            border: "none",
+            background: "#2c2c2c",
+            color: "white",
+            fontSize: "16px",
+            cursor: "pointer",
+            transition: "0.3s"
+          }}
+        >
+          {loading ? "Yükleniyor..." : "Ödeme Yakında Aktif"}
+        </button>
+
+        {/* Alt mesaj */}
+        <p style={{
+          marginTop: "15px",
+          fontSize: "12px",
+          color: "#777",
+          textAlign: "center"
+        }}>
+          Şu anda ödeme sistemi test aşamasındadır.
+        </p>
+      </div>
     </div>
   );
-}
+}<LegalLinks />

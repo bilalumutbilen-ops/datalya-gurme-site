@@ -1,7 +1,6 @@
 "use client";
 
-"use client";
-
+import LegalLinks from "./components/LegalLinks";
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useCart } from "./context/CartContext";
@@ -90,21 +89,24 @@ export default function Home() {
 
   const filteredProducts = useMemo(() => {
     return products.filter((product) => product.tabs.includes(activeTab));
-  }, [activeTab, products]);
+  }, [activeTab]);
 
   const handleAddToCart = (product: ProductItem) => {
-  const numericPrice = Number(product.price.replace("₺", "").replace(".", "").replace(",", "."));
+    const numericPrice = Number(
+      product.price.replace("₺", "").replace(".", "").replace(",", ".")
+    );
 
-  addToCart({
-    id: product.id,
-    title: product.title,
-    price: numericPrice,
-    imageClass: product.imageClass,
-    detailHref: product.detailHref,
-  });
+    addToCart({
+      id: product.id,
+      title: product.title,
+      price: numericPrice,
+      imageClass: product.imageClass,
+      detailHref: product.detailHref,
+    });
 
-  setSelectedProduct(null);
-};
+    setSelectedProduct(null);
+  };
+
   return (
     <main
       className="site"
@@ -169,8 +171,8 @@ export default function Home() {
             }}
           >
             <Link href="/sepet" className="cartMiniBadge">
-  Sepet <span>{totalItems}</span>
-</Link>
+              Sepet <span>{totalItems}</span>
+            </Link>
 
             <button
               className={`menuToggle ${menuOpen ? "active" : ""}`}
@@ -609,12 +611,12 @@ export default function Home() {
                   </div>
 
                   <button
-  className="orderBtn"
-  onClick={() => handleAddToCart(product)}
-  type="button"
->
-  Sepete Ekle
-</button>
+                    className="orderBtn"
+                    onClick={() => handleAddToCart(product)}
+                    type="button"
+                  >
+                    Sepete Ekle
+                  </button>
                 </div>
               </article>
             ))}
@@ -752,12 +754,12 @@ export default function Home() {
 
                 <div className="quickViewActions">
                   <button
-  type="button"
-  className="btn btnGold"
-  onClick={() => handleAddToCart(selectedProduct)}
->
-  Sepete Ekle
-</button>
+                    type="button"
+                    className="btn btnGold"
+                    onClick={() => handleAddToCart(selectedProduct)}
+                  >
+                    Sepete Ekle
+                  </button>
 
                   <Link href={selectedProduct.detailHref} className="btn btnOutline">
                     Ürün Detayına Git
@@ -768,6 +770,8 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      <LegalLinks />
     </main>
   );
 }
