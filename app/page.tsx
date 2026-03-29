@@ -46,8 +46,8 @@ export default function Home() {
     {
       id: 2,
       category: "Zeytinyağı",
-      title: "1 Litre Özel Seri",
-      detailHref: "/urun/1-litre-ozel-seri",
+      title: " Premium Teneke Özel Seri",
+      detailHref: "/urun/Premium-Teneke-ozel-seri",
       description:
         "Yoğun karakter, seçilmiş üretim ve sofralarda premium deneyim sunan özel seri.",
       price: "₺699",
@@ -57,34 +57,34 @@ export default function Home() {
       badges: ["%0,3 Asit", "Özel Seri"],
       tabs: ["cok-satanlar", "yeni-gelenler"],
     },
+      {
+  id: 3,
+  category: "Doğal Sabun",
+  title: "Zeytinyağlı Doğal Sabun",
+  detailHref: "/urun/zeytinyagli-dogal-sabun",
+  description:
+    "Sade içerik yaklaşımıyla üretilen, günlük bakımda doğal dokunuş sunan seri.",
+  price: "₺199",
+  imageClass: "productOliveSoap",
+  whatsappHref:
+    "https://wa.me/905345177996?text=Merhaba%20Zeytinya%C4%9Fl%C4%B1%20Do%C4%9Fal%20Sabun%20i%C3%A7in%20bilgi%20almak%20istiyorum.",
+  badges: ["Doğal İçerik", "Günlük Bakım"],
+  tabs: ["cok-satanlar", "yeni-gelenler", "tercih-edilenler"],
+},
     {
-      id: 3,
-      category: "Doğal Sabun",
-      title: "Zeytinyağlı Doğal Sabun",
-      detailHref: "/urun/zeytinyagli-dogal-sabun",
-      description:
-        "Sade içerik yaklaşımıyla üretilen, günlük bakımda doğal dokunuş sunan seri.",
-      price: "₺149",
-      imageClass: "productSoap",
-      whatsappHref:
-        "https://wa.me/905345177996?text=Merhaba%20Zeytinya%C4%9Fl%C4%B1%20Do%C4%9Fal%20Sabun%20i%C3%A7in%20sipari%C5%9F%20vermek%20istiyorum.",
-      badges: ["Doğal İçerik", "Günlük Bakım"],
-      tabs: ["yeni-gelenler", "tercih-edilenler"],
-    },
-    {
-      id: 4,
-      category: "Doğal Sabun",
-      title: "Lavantalı Sabun",
-      detailHref: "/urun/lavantali-sabun",
-      description:
-        "Doğal bakım hissini aromatik dokunuşla tamamlayan özel sabun serisi.",
-      price: "₺169",
-      imageClass: "productLavender",
-      whatsappHref:
-        "https://wa.me/905345177996?text=Merhaba%20Lavantal%C4%B1%20Sabun%20i%C3%A7in%20sipari%C5%9F%20vermek%20istiyorum.",
-      badges: ["Lavanta Özlü", "Doğal Bakım"],
-      tabs: ["cok-satanlar", "tercih-edilenler"],
-    },
+  id: 4,
+  category: "Doğal Sabun",
+  title: "Zeytinyağlı Sıvı Sabun",
+  detailHref: "/urun/zeytinyagli-sivi-sabun",
+  description:
+    "Zeytinyağı bazlı formülüyle günlük kullanımda nazik temizlik ve yumuşak bir bakım deneyimi sunan sıvı sabun.",
+  price: "₺199",
+  imageClass: "productLiquidSoap",
+  whatsappHref:
+    "https://wa.me/905345177996?text=Merhaba%20Zeytinya%C4%9Fl%C4%B1%20S%C4%B1v%C4%B1%20Sabun%20i%C3%A7in%20bilgi%20almak%20istiyorum.",
+  badges: ["Zeytinyağlı", "Günlük Bakım"],
+  tabs: ["cok-satanlar", "yeni-gelenler", "tercih-edilenler"],
+},
   ];
 
   const filteredProducts = useMemo(() => {
